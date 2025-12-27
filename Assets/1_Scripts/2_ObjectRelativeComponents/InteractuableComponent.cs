@@ -9,7 +9,7 @@ public class InteractuableComponent : MonoBehaviour, IInteractuableComponent
         _playerInteract = GameObject.FindGameObjectWithTag("Player").GetComponent<ICanInteractComponent>();
     }
 
-    public void ThingIDo()
+    public virtual void ThingIDo()
     {
         Debug.Log("Estoy interactuando");
     }
