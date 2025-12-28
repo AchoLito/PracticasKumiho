@@ -3,46 +3,46 @@ using UnityEngine;
 
 public class CubeController : InteractuableComponent
 {
-    bool isFloor = true;
+    bool _isFloor = true;
 
-    Action doTheThing;
+    Action _doTheThing;
 
-    CubeDescend descend = new CubeDescend();
-    CubeElevate elevate= new CubeElevate();
+    CubeDescend _descend = new CubeDescend();
+    CubeElevate _elevate= new CubeElevate();
 
     Rigidbody rb;
 
     public override void ThingIDo()
     {
-        doTheThing?.Invoke();
+        _doTheThing?.Invoke();
 
-        if (isFloor)
+        if (_isFloor)
         {
-            doTheThing = Descend;
-            rb.useGravity = false;
-            isFloor = false;
+            _doTheThing = Descend;
+            _isFloor = false;
         }
         else
         {
-            doTheThing = Elevate;
-            rb.useGravity = true;
-            isFloor = true;
+            _doTheThing = Elevate;
+            _isFloor = true;
         }          
     }
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        doTheThing = Elevate;
+        _doTheThing = Elevate;
     }
 
     public void Elevate()
     {
-        elevate.ThingIDo(transform);
+        rb.useGravity = false;
+        _elevate.ThingIDo(transform);
     }
 
     public void Descend()
     {
-        descend.ThingIDo(transform);
+        rb.useGravity = true;
+        _descend.ThingIDo(transform);
     }
 }
