@@ -9,10 +9,11 @@ public interface IJumpComponent
 
     bool isJumping {  get; set; }
     bool isGrounded { get; set; }
+    bool isFalling { get; set; }
 
     Rigidbody rb {  get; set; }
 
-    void Jump(float duration);
+    void Jump();
 
     bool SetGrounded();
 }

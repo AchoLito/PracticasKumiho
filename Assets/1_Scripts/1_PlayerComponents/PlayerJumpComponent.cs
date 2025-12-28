@@ -9,6 +9,7 @@ public class PlayerJumpComponent : MonoBehaviour, IJumpComponent
     public float jumpForce { get; set; }
     public bool isJumping { get; set; }
     public bool isGrounded { get; set; }
+    public bool isFalling { get; set; }
     public Rigidbody rb { get; set; }
 
     float _jumpDuration;
@@ -19,44 +20,50 @@ public class PlayerJumpComponent : MonoBehaviour, IJumpComponent
     void Start()
     {
         isJumping = false;
-        isGrounded = false;
+        isGrounded = true;
+        isFalling = false;
         jumpForce = 5f;
-        maxJumpHeight = 5f;
+        maxJumpHeight = 1f;
 
         gravityScale = 1f;
 
-        maxJumpTime = Mathf.Sqrt(2*maxJumpHeight/(-Physics.gravity.y)) - (2*jumpForce/Physics.gravity.y);
+        maxJumpTime = 0.6f;
 
         rb = GetComponent<Rigidbody>();
 
         layerMask = LayerMask.GetMask("Floor");
     }
 
-    public void Jump(float duration)
+    public void Jump()
     {
-        if (!isJumping)
-             _jumpDuration = duration;
-
-        float timeDuration = duration - _jumpDuration;
+        float timeDuration =  _jumpDuration;
         Debug.Log("TimeDuration: " + timeDuration + " MaxDuration: " + maxJumpTime);
-        if (timeDuration >= maxJumpTime) return;
+        if (timeDuration >= maxJumpTime) { SetGrounded(); return; }
         isJumping=true;
-        float jumpHeight = Mathf.Min(duration/ maxJumpTime*maxJumpHeight, maxJumpHeight);
+        _jumpDuration += Time.deltaTime;
+        rb.linearVelocity = jumpForce * Vector3.up;
 
-        rb.AddForce(new Vector2(0f, jumpHeight/maxJumpHeight*jumpForce*gravityScale),ForceMode.Impulse);
-
-        StartCoroutine(CheckGrounded());
+        
     }
 
     public bool SetGrounded()
     {
+        StartCoroutine(CheckGrounded());
+        isFalling = true;
+        return true;
+    }
+
+    bool IsItGrounded()
+    {
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.position, Vector3.down, out hit, 1f, layerMask))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 1f, layerMask))
         {
             Debug.DrawRay(transform.position, Vector3.down * hit.distance, Color.red);
-            isGrounded=true;
-            isJumping=false;
+            isGrounded = true;
+            isJumping = false;
+            isFalling = false;
+            _jumpDuration = 0;
             return true;
         }
 
@@ -66,7 +73,7 @@ public class PlayerJumpComponent : MonoBehaviour, IJumpComponent
 
     IEnumerator CheckGrounded()
     {
-        while(!SetGrounded())
+        while(!IsItGrounded())
         {
             Debug.Log("Estoy checkeando si estoy en el suelo");
             yield return null;

@@ -7,11 +7,16 @@ public class PlayerController : MonoBehaviour
     ICanInteractComponent _playerInteract;
     IJumpComponent _playerJump;
 
+    [SerializeField]InputAction _jump;
+    bool _isHoldingJump;
+
     void Start()
     {
         _playerMovement = GetComponent<IMoveableComponent>();
         _playerInteract = GetComponent<ICanInteractComponent>();
         _playerJump = GetComponent<IJumpComponent>();
+
+        _jump = InputSystem.actions.FindAction("Jump");
     }
 
     // Update is called once per frame
@@ -19,6 +24,15 @@ public class PlayerController : MonoBehaviour
     {
         if(_playerMovement.direction != Vector2.zero)
             _playerMovement.Move();
+
+        if(_jump.IsPressed() && !_playerJump.isFalling)
+        {
+            _playerJump.Jump();
+        }
+        else if(_playerJump.isJumping)
+        {
+            _playerJump.SetGrounded();
+        }
     }
 
     public void UpdateDirection(InputAction.CallbackContext context)
@@ -31,11 +45,5 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Boton: " + context.ReadValueAsButton());
         if(context.ReadValueAsButton())
             _playerInteract.interactFunction?.Invoke();
-    }
-
-    public void Jump(InputAction.CallbackContext context)
-    {
-        if (context.ReadValueAsButton())
-            _playerJump.Jump(Time.time);
     }
 }
