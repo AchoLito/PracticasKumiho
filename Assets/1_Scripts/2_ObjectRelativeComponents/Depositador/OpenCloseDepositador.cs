@@ -2,7 +2,17 @@ using UnityEngine;
 
 public class OpenCloseDepositador : DepositadorController
 {
-    [SerializeField] GameObject[] _walls;
+    GameObject[] _walls;
+
+    private void Awake()
+    {
+        InteractuableEnums.GetObjectsOfColor(_color, out _walls);
+
+#if UNITY_EDITOR
+        Debug.Log("He encontrado: " + _walls.Length);
+#endif
+    }
+
     protected override void DepositeCubeBehaviour()
     {
         foreach (GameObject wall in _walls)

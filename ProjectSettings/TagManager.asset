@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Cube
+  - Red
+  - Green
+  - Blue
   layers:
   - Default
   - TransparentFX
@@ -12,8 +15,8 @@ TagManager:
   - Floor
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Placa
   - 
   - 
   - 

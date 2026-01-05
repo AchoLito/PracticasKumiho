@@ -10,6 +10,8 @@ public class CubeController : InteractuableComponent
     CubeDescend _descend = new CubeDescend();
     CubeElevate _elevate= new CubeElevate();
 
+    [SerializeField] public InteractuableEnums.Colors color;
+
     Rigidbody rb;
 
     public override void ThingIDo()

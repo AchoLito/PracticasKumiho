@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 285952772}
   - component: {fileID: 285952771}
   - component: {fileID: 285952770}
+  - component: {fileID: 285952780}
   - component: {fileID: 285952776}
   - component: {fileID: 285952779}
   m_Layer: 0
@@ -151,16 +152,16 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 191
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.9020662, y: 1.2610674, z: 2.8049827}
+  m_Size: {x: 3.47, y: 1, z: 3.47}
   m_Center: {x: -0.024738312, y: 0.14285636, z: -0.054997146}
 --- !u!65 &285952771
 BoxCollider:
@@ -172,10 +173,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 247
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -206,7 +207,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b0a605fed9e4d94085c3a802ce5eafe, type: 2}
+  - {fileID: 2100000, guid: c4ce1152afc906347b3a17e844308b0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -290,6 +291,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a19db0dec6dddb4f97beb148dd9a772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _color: 0
+--- !u!65 &285952780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285952769}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 127
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6243641, y: 1, z: 1.624364}
+  m_Center: {x: -0.051123023, y: 0.1853615, z: 0.0657748}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +583,7 @@ GameObject:
   - component: {fileID: 503831999}
   - component: {fileID: 503831998}
   - component: {fileID: 503831997}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +697,7 @@ GameObject:
   - component: {fileID: 729794119}
   - component: {fileID: 729794121}
   - component: {fileID: 729794120}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -947,7 +970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _rotateSpeed: 200
+  _rotateSpeed: 360
 --- !u!114 &729794119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,7 +1134,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 451aa9b10d6b7dc4ba5bff89fb7df46b, type: 2}
+  - {fileID: 2100000, guid: 7b0a605fed9e4d94085c3a802ce5eafe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1278,7 +1301,7 @@ GameObject:
   - component: {fileID: 1635628071}
   - component: {fileID: 1635628075}
   - component: {fileID: 1635628076}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Depositador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1329,7 +1352,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b0a605fed9e4d94085c3a802ce5eafe, type: 2}
+  - {fileID: 2100000, guid: c4ce1152afc906347b3a17e844308b0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1413,8 +1436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f756f6b9d286443927ba8ef22df4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _walls:
-  - {fileID: 1847234384}
+  _color: 0
 --- !u!1 &1847234384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,9 +1449,10 @@ GameObject:
   - component: {fileID: 1847234387}
   - component: {fileID: 1847234386}
   - component: {fileID: 1847234385}
+  - component: {fileID: 1847234389}
   m_Layer: 0
   m_Name: Pared
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1478,7 +1501,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b0a605fed9e4d94085c3a802ce5eafe, type: 2}
+  - {fileID: 2100000, guid: c4ce1152afc906347b3a17e844308b0a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1523,6 +1546,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1847234389
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847234384}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
