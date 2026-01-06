@@ -26,7 +26,7 @@ public class PlayerJumpComponent : MonoBehaviour, IJumpComponent
 
         gravityScale = 1f;
 
-        maxJumpTime = 0.6f;
+        maxJumpTime = 0.3f;
 
         rb = GetComponent<Rigidbody>();
 

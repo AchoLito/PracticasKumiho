@@ -101,10 +101,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 201
+    m_Bits: 73
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 310
+    m_Bits: 438
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0

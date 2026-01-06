@@ -27,7 +27,7 @@ public class PlayerMovementComponent : MonoBehaviour, IMoveableComponent
         
         Vector3 movement = IsometricVector.TransformToIsometricCoords(new Vector3(direction.x, 0, direction.y));
 
-        if (Physics.Raycast(transform.position, movement, out hit, distance, LayerMask.GetMask("Wall")))
+        if (Physics.Raycast(transform.position, movement, out hit, distance, LayerMask.GetMask("Wall", "Floor")))
         {
             return;
         }

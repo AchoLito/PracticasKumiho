@@ -10,7 +10,7 @@ public class FinishLevel : MonoBehaviour
         {
             level++;
 
-            if (level >= SceneManager.sceneCountInBuildSettings)
+            if (level > SceneManager.sceneCountInBuildSettings)
             {
                 level = 1;
             }
