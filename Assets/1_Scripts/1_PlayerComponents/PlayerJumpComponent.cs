@@ -23,7 +23,6 @@ public class PlayerJumpComponent : MonoBehaviour, IJumpComponent
         isGrounded = true;
         isFalling = false;
         jumpForce = 5f;
-        maxJumpHeight = 1f;
 
         gravityScale = 1f;
 
@@ -41,9 +40,7 @@ public class PlayerJumpComponent : MonoBehaviour, IJumpComponent
         if (timeDuration >= maxJumpTime) { SetGrounded(); return; }
         isJumping=true;
         _jumpDuration += Time.deltaTime;
-        rb.linearVelocity = jumpForce * Vector3.up;
-
-        
+        rb.linearVelocity = jumpForce * Vector3.up;     
     }
 
     public bool SetGrounded()

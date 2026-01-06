@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     IJumpComponent _playerJump;
 
     [SerializeField]InputAction _jump;
-    bool _isHoldingJump;
 
     void Start()
     {

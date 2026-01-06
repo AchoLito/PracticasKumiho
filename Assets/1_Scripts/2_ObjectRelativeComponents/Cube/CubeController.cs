@@ -14,6 +14,8 @@ public class CubeController : InteractuableComponent
 
     Rigidbody rb;
 
+    IMoveableComponent _playerMovement;
+
     public override void ThingIDo()
     {
         _doTheThing?.Invoke();
@@ -34,17 +36,29 @@ public class CubeController : InteractuableComponent
     {
         rb = GetComponent<Rigidbody>();
         _doTheThing = Elevate;
+
+        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<IMoveableComponent>();
+    }
+
+    private void Update()
+    {
+        if (!_isFloor)
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     public void Elevate()
     {
-        rb.useGravity = false;
+        rb.isKinematic = true;
         _elevate.ThingIDo(transform);
+        gameObject.layer = LayerMask.NameToLayer("Player");
+        _playerMovement.distance = 2.5f;
     }
 
     public void Descend()
     {
-        rb.useGravity = true;
+        rb.isKinematic = false;
         _descend.ThingIDo(transform);
+        gameObject.layer = LayerMask.NameToLayer("Default");
+        _playerMovement.distance = 1f;
     }
 }
